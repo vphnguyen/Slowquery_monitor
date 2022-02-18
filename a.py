@@ -1,11 +1,16 @@
 import yaml,datetime,pytz
 import re,os
 
+#=============================================== FMT
+help_fs="# HELP %s %s."
+type_fs="# TYPE %s gauge"
+metric_fs="%s %s"
+metricL_fs="%s{%s=\"%s\"} %s"
 #=========  CHECKING INPUT FILENAME CONFIG  --
 # Check config file
 with open('/home/kali/Downloads/config.yml', 'r') as cf_file:
 	config_content = yaml.safe_load(cf_file)
-if not cf_file: 
+if not cf_file:
 	print("cannot found config file.....")
 	exit()
 
@@ -50,7 +55,7 @@ def  renderTimeRange(content):
 def render_Overall(content):
 	array = content.strip().split(" ")
 	#==
-	global total, unique, QPS 
+	global total, unique, QPS
 	total = unitRender(  array[array.index('total,')-1]  )
 	unique = array[array.index('unique,')-1]
 	QPS = array[array.index('QPS,')-1]
@@ -65,6 +70,20 @@ def render_Rank1(content):
 	r1_vm=array[7]
 	r1_tp=array[8]
 
+#=========
+
+def metric_format(name,help,metrics):
+    name=name.replace(" ","_")
+    fname = help_fs % (name.strip(), help.strip())
+    ftype = type_fs % (name.strip())
+    fmetric=""
+    if type(metrics) is dict:
+        for k,v in metrics.items():
+            fmetric += metricL_fs % (name,"type",k,v) +"\n"
+    else:
+        fmetric = metric_fs % (name, metrics)
+
+    return "%s\n%s\n%s" %(fname,ftype,fmetric)
 
 #=========
 ovr_keys = ['Overall' , 'total' , 'unique' , 'QPS']
@@ -79,7 +98,7 @@ if os.path.exists(config_content['digest_filename']):
 		if line.startswith("# Profile"):
 			i = id+3
 			print("======= FOUNDED RANK 1  =====: ")
-		if not i  == 0 and id == i: 
+		if not i  == 0 and id == i:
 			render_Rank1(line)
 			break
 		if  line.startswith("# Overall") and all(akey in line for akey in ovr_keys):
@@ -108,3 +127,22 @@ pc= float(r1_pc.strip("%"))/100
 print("Total consumed time:", float(r1_rsp) / pc, " sec")
 print("One r1 call take about:", float(r1_rsp)/float(r1_c)," sec")
 print("RATE Unique/Total:", float(unique) / float(total) * 100 ," %")
+
+
+# ======  Final output for file collector  =======================
+mtrs_f = open('metrics.txt','w')
+#------
+num1 = {
+  "total": total,
+  "unique": unique,
+}
+r1 = {
+  "calls": r1_c,
+  "response": r1_rsp,
+  "percentage": r1_pc,
+  "VM": r1_vm
+}
+#------
+print(metric_format("Number of queries","All what you need in overall",num1),file=mtrs_f)
+print(metric_format("QPS during log","Number of QPS in during slow_log's",num1),file=mtrs_f)
+print(metric_format("Rank1 details","Rank1 number result",r1),file=mtrs_f)
