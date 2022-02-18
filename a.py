@@ -8,7 +8,7 @@ metric_fs="%s %s"
 metricL_fs="%s{%s=\"%s\"} %s"
 #=========  CHECKING INPUT FILENAME CONFIG  --
 # Check config file
-with open('/home/kali/Downloads/config.yml', 'r') as cf_file:
+with open('/home/kali/Downloads//config.yml', 'r') as cf_file:
 	config_content = yaml.safe_load(cf_file)
 if not cf_file:
 	print("cannot found config file.....")
@@ -79,7 +79,7 @@ def metric_format(name,help,metrics):
     fmetric=""
     if type(metrics) is dict:
         for k,v in metrics.items():
-            fmetric += metricL_fs % (name,"type",k,v) +"\n"
+            fmetric += metricL_fs % (name,"type",k,v) +("\n" if metrics.keys()[-1] not k )
     else:
         fmetric = metric_fs % (name, metrics)
 
@@ -128,7 +128,6 @@ print("Total consumed time:", float(r1_rsp) / pc, " sec")
 print("One r1 call take about:", float(r1_rsp)/float(r1_c)," sec")
 print("RATE Unique/Total:", float(unique) / float(total) * 100 ," %")
 
-
 # ======  Final output for file collector  =======================
 mtrs_f = open('metrics.txt','w')
 #------
@@ -139,10 +138,10 @@ num1 = {
 r1 = {
   "calls": r1_c,
   "response": r1_rsp,
-  "percentage": r1_pc,
+  "percentage": r1_pc.replace("%",""),
   "VM": r1_vm
 }
 #------
 print(metric_format("Number of queries","All what you need in overall",num1),file=mtrs_f)
-print(metric_format("QPS during log","Number of QPS in during slow_log's",num1),file=mtrs_f)
+print(metric_format("QPS during log","Number of QPS in during slow_log's",QPS),file=mtrs_f)
 print(metric_format("Rank1 details","Rank1 number result",r1),file=mtrs_f)
