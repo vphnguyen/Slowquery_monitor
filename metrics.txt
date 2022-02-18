@@ -1,6 +1,0 @@
-# HELP number_of_queries this is its descrp.
-# TYPE number_of_queries gauge
-number_of_queries{type="total"} 3000
-number_of_queries{type="unique"} 123
-number_of_queries{type="rank1"} 99999
-

@@ -79,7 +79,7 @@ def metric_format(name,help,metrics):
     fmetric=""
     if type(metrics) is dict:
         for k,v in metrics.items():
-            fmetric += metricL_fs % (name,"type",k,v) +("\n" if not metrics.keys()[-1] == k )
+            fmetric += metricL_fs % (name,"type",k,v) + ("\n" if list(metrics.keys())[-1] != k else "")
     else:
         fmetric = metric_fs % (name, metrics)
 
