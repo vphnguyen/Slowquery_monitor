@@ -1,0 +1,2 @@
+# Slowquery_monitor
+Nodec
