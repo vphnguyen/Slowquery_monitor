@@ -102,8 +102,8 @@ if os.path.exists(config_content['digest_filename']):
 			print("======= FOUNDED RANK 1  =====: ")
 		if not i  == 0 and id == i:
 			render_Rank1(line)
-		if id in range(i,1+10)
-			render_Otherrank()
+		if id in range(i,i+10):
+			print("othercheck")
 			if ("#" not in line.startswith() ):
 				break
 		if  line.startswith("# Overall") and all(akey in line for akey in ovr_keys):
