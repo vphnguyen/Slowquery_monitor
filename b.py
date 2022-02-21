@@ -15,6 +15,8 @@ if not cf_file:
 	exit()
 
 # Check digested path
+
+print(type(config_content))
 if 'digest_filename' in config_content:
 	print(config_content['digest_filename'])
 else:
