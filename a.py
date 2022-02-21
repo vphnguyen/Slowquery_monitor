@@ -71,7 +71,6 @@ def render_Rank1(content):
 	r1_tp=array[8]
 
 #=========
-
 def metric_format(name,help,metrics):
     name=name.replace(" ","_")
     fname = help_fs % (name.strip(), help.strip())
@@ -142,6 +141,6 @@ r1 = {
   "VM": r1_vm
 }
 #------
-print(metric_format("Number of queries","All what you need in overall",num1),file=mtrs_f)
-print(metric_format("QPS during log","Number of QPS in during slow_log's",QPS),file=mtrs_f)
-print(metric_format("Rank1 details","Rank1 number result",r1),file=mtrs_f)
+print(metric_format("Number of queries","All what you need in overall===============================",num1),file=mtrs_f)
+print(metric_format("QPS during log","Number of QPS in during slow_logs=============================",QPS),file=mtrs_f)
+print(metric_format("Rank1 details","Rank1 number result============================================",r1),file=mtrs_f)
