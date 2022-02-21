@@ -8,7 +8,7 @@ metric_fs="%s %s"
 metricL_fs="%s{%s=\"%s\"} %s"
 #=========  CHECKING INPUT FILENAME CONFIG  --
 # Check config file
-with open('/home/kali/Downloads/slowquery_monitor/config.yml', 'r') as cf_file:
+with open('config_test.yml', 'r') as cf_file:
 	config_content = yaml.safe_load(cf_file)
 if not cf_file:
 	print("cannot found config file.....")
@@ -18,7 +18,7 @@ if not cf_file:
 if 'digest_filename' in config_content:
 	print(config_content['digest_filename'])
 else:
-	config_content['digest_filename']="digested.rp"
+	config_content['digest_filename']="a.txt"
 	print("Not config filename, setted to:",config_content['digest_filename'])
 
 def unitRender(input):
@@ -152,7 +152,7 @@ r1 = {
 if 'metrics_output_destination' in config_content:
 	print(config_content['metrics_output_destination'])
 else:
-	config_content['metrics_output_destination']="/var/lib/mysql/digested_log/metrics.prom"
+	config_content['metrics_output_destination']="tesst___metrics.prom"
 	print("Not config filename, setted to:",config_content['metrics_output_destination'])
 
 mtrs_f = open(config_content['metrics_output_destination'],'w')
