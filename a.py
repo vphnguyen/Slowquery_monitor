@@ -8,7 +8,7 @@ metric_fs="%s %s"
 metricL_fs="%s{%s=\"%s\"} %s"
 #=========  CHECKING INPUT FILENAME CONFIG  --
 # Check config file
-with open('/home/kali/Downloads//config.yml', 'r') as cf_file:
+with open('/home/kali/Downloads/slowquery_monitor/config.yml', 'r') as cf_file:
 	config_content = yaml.safe_load(cf_file)
 if not cf_file:
 	print("cannot found config file.....")
@@ -128,7 +128,7 @@ print("One r1 call take about:", float(r1_rsp)/float(r1_c)," sec")
 print("RATE Unique/Total:", float(unique) / float(total) * 100 ," %")
 
 # ======  Final output for file collector  =======================
-mtrs_f = open('metrics.txt','w')
+
 #------
 num1 = {
   "total": total,
@@ -140,6 +140,17 @@ r1 = {
   "percentage": r1_pc.replace("%",""),
   "VM": r1_vm
 }
+
+
+if 'metrics_output_destination' in config_content:
+	print(config_content['metrics_output_destination'])
+else:
+	config_content['metrics_output_destination']="/var/lib/mysql/digested_log/metrics.prom"
+	print("Not config filename, setted to:",config_content['metrics_output_destination'])
+
+mtrs_f = open(config_content['metrics_output_destination'],'w')
+
+
 #------
 print(metric_format("Number of queries","All what you need in overall===============================",num1),file=mtrs_f)
 print(metric_format("QPS during log","Number of QPS in during slow_logs=============================",QPS),file=mtrs_f)
