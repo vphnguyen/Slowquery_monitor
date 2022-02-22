@@ -89,7 +89,7 @@ def render_Allrank(content):
 			"rank" : array[1],
 			"calls" : array[5],
 			"response" : array[3],
-			"percentage": array[4],
+			"percentage":  array[4].replace("%",""),
 			"vm" : array[7]
 		})
 
