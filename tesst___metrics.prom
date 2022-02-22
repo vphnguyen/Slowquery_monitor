@@ -1,0 +1,46 @@
+# HELP Number_of_queries All what you need in overall===============================.
+# TYPE Number_of_queries gauge
+Number_of_queries{type="total"} 66800.0
+Number_of_queries{type="unique"} 7
+# HELP QPS_during_log Number of QPS in during slow_logs=============================.
+# TYPE QPS_during_log gauge
+QPS_during_log 0.04
+# HELP Maxsp Number of QPS in during slow_logs=============================.
+# TYPE Maxsp gauge
+Maxsp 1
+# HELP response Rank1 number result============================================.
+# TYPE response gauge
+response{type="rank1"} 17769.0099
+response{type="rank2"} 27769.0099
+response{type="rank4"} 37769.0099
+response{type="rank3"} 47769.0099
+response{type="rank5"} 57769.0099
+response{type="rank6"} 67769.0099
+response{type="rank7"} 77769.0099
+# HELP calls Rank1 number result============================================.
+# TYPE calls gauge
+calls{type="rank1"} 11
+calls{type="rank2"} 21
+calls{type="rank4"} 31
+calls{type="rank3"} 41
+calls{type="rank5"} 51
+calls{type="rank6"} 61
+calls{type="rank7"} 71
+# HELP percentage Rank1 number result============================================.
+# TYPE percentage gauge
+percentage{type="rank1"} 98.71%
+percentage{type="rank2"} 98.72%
+percentage{type="rank4"} 98.73%
+percentage{type="rank3"} 98.74%
+percentage{type="rank5"} 98.75%
+percentage{type="rank6"} 98.75%
+percentage{type="rank7"} 98.76%
+# HELP vm Rank1 number result============================================.
+# TYPE vm gauge
+vm{type="rank1"} 0.00
+vm{type="rank2"} 0.00
+vm{type="rank4"} 0.00
+vm{type="rank3"} 0.00
+vm{type="rank5"} 0.00
+vm{type="rank6"} 0.00
+vm{type="rank7"} 0.00

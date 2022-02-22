@@ -1,3 +1,3 @@
-digest_filename: /var/lib/mysql/digested_log/a.txt
+digest_cfilename: /var/lib/mysql/digested_log/a.txt
 metrics_output_destination: /var/lib/mysql/digested_log/metrics.prom
 #digest_filename: a.txt
