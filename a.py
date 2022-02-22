@@ -18,7 +18,7 @@ profile_line = 0
 
 #===============================================  CHECKING YAML CONFIG  --
 # =========== Kiểm tra file config
-with open('config.yml', 'r') as cf_file:
+with open('/home/kali/Downloads/slowquery_monitor/config.yml', 'r') as cf_file:
 	config_content = yaml.safe_load(cf_file)
 	if config_content is None:
 		config_content={}
