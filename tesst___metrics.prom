@@ -7,7 +7,11 @@ Number_of_queries{type="unique"} 7
 QPS_during_log 0.04
 # HELP Maxsp Number of QPS in during slow_logs=============================.
 # TYPE Maxsp gauge
-Maxsp 1
+Maxsp{type="rank"} 1
+Maxsp{type="calls"} 11
+Maxsp{type="response"} 17769.0099
+Maxsp{type="percentage"} 98.71
+Maxsp{type="vm"} 0.00
 # HELP response Rank1 number result============================================.
 # TYPE response gauge
 response{type="rank1"} 17769.0099
@@ -28,13 +32,13 @@ calls{type="rank6"} 61
 calls{type="rank7"} 71
 # HELP percentage Rank1 number result============================================.
 # TYPE percentage gauge
-percentage{type="rank1"} 98.71%
-percentage{type="rank2"} 98.72%
-percentage{type="rank4"} 98.73%
-percentage{type="rank3"} 98.74%
-percentage{type="rank5"} 98.75%
-percentage{type="rank6"} 98.75%
-percentage{type="rank7"} 98.76%
+percentage{type="rank1"} 98.71
+percentage{type="rank2"} 98.72
+percentage{type="rank4"} 98.73
+percentage{type="rank3"} 98.74
+percentage{type="rank5"} 98.75
+percentage{type="rank6"} 98.75
+percentage{type="rank7"} 98.76
 # HELP vm Rank1 number result============================================.
 # TYPE vm gauge
 vm{type="rank1"} 0.00

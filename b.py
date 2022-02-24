@@ -176,7 +176,7 @@ def to_dict(dict , ikey):
 #------
 print(metric_format("Number of queries","All what you need in overall===============================",overall_array),file=mtrs_f)
 print(metric_format("QPS during log","Number of QPS in during slow_logs=============================",QPS),file=mtrs_f)
-print(metric_format("Maxsp","Number of QPS in during slow_logs=============================",maxResponse["rank"]),file=mtrs_f)
+print(metric_format("Maxsp","Number of QPS in during slow_logs=============================",maxResponse),file=mtrs_f)
 
 print(metric_format("response","Rank1 number result============================================",to_dict(ranks,"response")),file=mtrs_f)
 

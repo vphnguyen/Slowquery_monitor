@@ -167,14 +167,14 @@ def to_dict(dict , ikey):
 
 
 #------
-print(metric_format("Number of queries","All what you need in overall===============================",overall_array),file=mtrs_f)
-print(metric_format("QPS during log","Number of QPS in during slow_logs=============================",QPS),file=mtrs_f)
-print(metric_format("Maxsp","Number of QPS in during slow_logs=============================",maxResponse["rank"]),file=mtrs_f)
+print(metric_format("SQ Overall","Only Total and unique in overall===============================",overall_array),file=mtrs_f)
+print(metric_format("SQ QPS during log time","QPS during slow_logs time=============================",QPS),file=mtrs_f)
+print(metric_format("SQ Slowest query","All in slowest=============================",maxResponse),file=mtrs_f)
 
-print(metric_format("response","Rank1 number result============================================",to_dict(ranks,"response")),file=mtrs_f)
+print(metric_format("SQ Response time","Total resp time of unique============================================",to_dict(ranks,"response")),file=mtrs_f)
 
-print(metric_format("calls","Rank1 number result============================================",to_dict(ranks,"calls")),file=mtrs_f)
+print(metric_format("SQ Calls","Call time of any rank============================================",to_dict(ranks,"calls")),file=mtrs_f)
 
-print(metric_format("percentage","Rank1 number result============================================",to_dict(ranks,"percentage")),file=mtrs_f)
+print(metric_format("SQ Percentage","Pct without MISC============================================",to_dict(ranks,"percentage")),file=mtrs_f)
 
-print(metric_format("vm","Rank1 number result============================================",to_dict(ranks,"vm")),file=mtrs_f)
+print(metric_format("SQ VM","VM of all============================================",to_dict(ranks,"vm")),file=mtrs_f)
